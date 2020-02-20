@@ -1,0 +1,15 @@
+input.onButtonPressed(Button.B, function () {
+    basic.showNumber(iBIT.ReadADC(ibitReadADC.ADC1))
+})
+input.onButtonPressed(Button.A, function () {
+    basic.showNumber(iBIT.ReadADC(ibitReadADC.ADC0))
+})
+basic.forever(function () {
+    if (iBIT.ReadADC(ibitReadADC.ADC0) < 3000 && iBIT.ReadADC(ibitReadADC.ADC1) < 3000) {
+        iBIT.Motor(ibitMotor.Forward, 50)
+    } else if (iBIT.ReadADC(ibitReadADC.ADC0) < 3000 && iBIT.ReadADC(ibitReadADC.ADC1) > 3000) {
+        iBIT.Spin(ibitSpin.Left, 50)
+    } else if (iBIT.ReadADC(ibitReadADC.ADC0) > 3000 && iBIT.ReadADC(ibitReadADC.ADC1) < 3000) {
+        iBIT.Spin(ibitSpin.Right, 50)
+    }
+})
